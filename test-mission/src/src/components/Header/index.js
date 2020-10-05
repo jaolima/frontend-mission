@@ -10,6 +10,7 @@ import logo from '../../assets/images/logo.png';
 export default function Header(props) {
   return (
   <Container>
+    {console.log('propss', )}
     <Link to="/">
       <img src={logo} alt="BarberShop" />
       </Link>
@@ -17,7 +18,7 @@ export default function Header(props) {
       <Cart to="/cart">
         <div>
           <strong>Meu Carrinho</strong>
-          <span>{props.amount} itens</span>
+          <span>{props.loading} itens</span>
         </div>
         <MdShoppingBasket size={36} color="#FFF"/>
       </Cart>

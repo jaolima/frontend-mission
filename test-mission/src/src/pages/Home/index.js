@@ -16,17 +16,62 @@ import { ProductList } from './styles';
 import {MdAddShoppingCart} from "react-icons/md";
 
 class Home extends Component {
+  state = {
+    products: [],
+  }
 
-getUsers = (p) => {
-    const {handleAddProduct, productsCart} = this.props
-        handleAddProduct(p);
-    console.log('teste', productsCart)
-}
+
+  async componentDidMount() {
+
+    const response = await api.get('products');
+
+    const data = response.data.map(product => ({
+      ...product,
+      priceFormatted: formatPrice(product.price),
+    }));
+    this.setState({products: data});
+  }
+
+  handleAddProduct = product => {
+    //dispatch serve para disparar uma action ao redux
+    const { dispatch } = this.props;
+
+    dispatch({
+      type: 'ADD_TO_CART',
+      product,
+    })
+  }
+// <ProductList>
+// { products.map(product => (
+//     <li key={product.id}>
+//       <img
+//           src={product.image}
+//           alt={product.title}
+//       />
+//       <strong>
+//         {product.title}
+//       </strong>
+//       <span>{product.priceFormatted}</span>
+//
+//       <button type="button" onClick={() => this.handleAddProduct(product)}>
+//         <div>
+//           <MdAddShoppingCart size={16} color="#FFF"/> 3
+//         </div>
+//
+//         <span>ADICIONAR AO CARRINHO</span>
+//       </button>
+//     </li>
+// ))}
+//
+// </ProductList>
+
 
   render(){
+    const { products } = this.state;
     return (
         <ProductList>
-          {this.props.products.map(product => (
+
+          {products.map(product => (
               <li key={product.id}>
                 <Card  style={{display: 'flex', flexDirection: 'column'}} >
                   <CardActionArea>
@@ -44,7 +89,7 @@ getUsers = (p) => {
                   </CardActionArea>
                   <CardActions>
 
-                    <button className="main-btn" type="button" onClick={() => this.getUsers(product)}>
+                    <button className="main-btn" type="button" onClick={() => this.handleAddProduct(product)}>
                       <div>
                         <MdAddShoppingCart size={16} color="#FFF"/>
                       </div>
@@ -58,6 +103,8 @@ getUsers = (p) => {
         </ProductList>
     );
   }
+
+
 }
 
 export default connect()(Home);
