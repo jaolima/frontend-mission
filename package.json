@@ -1,23 +1,42 @@
 {
-  "name": "frontend-test-mission",
-  "version": "1.0.0",
-  "description": "Esta é uma missão inicial para teste de suas habilidades Jedi com React e React native",
-  "main": "index.js",
-  "scripts": {
-    "api": "json-server --watch mock/product.json"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/keviocastro/frontend-test-mission.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/keviocastro/frontend-test-mission/issues"
-  },
-  "homepage": "https://github.com/keviocastro/frontend-test-mission#readme",
+  "name": "redux",
+  "version": "0.1.0",
+  "private": true,
   "dependencies": {
     "@material-ui/core": "^4.11.0",
-    "json-server": "^0.16.1"
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
+    "axios": "^0.19.2",
+    "polished": "^3.4.4",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-icons": "^3.9.0",
+    "react-redux": "^7.2.0",
+    "react-router-dom": "^5.1.2",
+    "react-scripts": "3.4.0",
+    "redux": "^4.0.5",
+    "styled-components": "^5.0.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
